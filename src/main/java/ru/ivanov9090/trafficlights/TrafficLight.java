@@ -28,7 +28,7 @@ public abstract class TrafficLight {
         return id;
     }
 
-    protected List<LocalDateTime> getDetectedObjects() {
+    public List<LocalDateTime> getDetectedObjects() {
         return detectedObjects;
     }
 
