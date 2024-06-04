@@ -1,2 +1,12 @@
-package ru.ivanov9090.TrafficLights;public enum Color {
+package ru.ivanov9090.trafficlights;
+
+/*
+Перечисление состояний светофора.
+При необходимости можно добавить другие состояния (например, разрешение движения направо, без движения вперед).
+ */
+
+public enum Color {
+    RED, // Запрещает движение
+    ORANGE,
+    GREEN // Разрешает движение
 }

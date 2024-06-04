@@ -1,0 +1,24 @@
+
+|
+java:S1854!"9Remove this useless assignment to local variable "node4".(ÌÜìÖ8¡Œçş1J$27843c20-5bff-4b9e-a3a6-190ff2201efc
+
+java:S1854 "9Remove this useless assignment to local variable "node3".(ø™àÙúÿÿÿÿ8Ğíş1J$5572ba96-8baa-45d5-8ddb-07322789b7fd
+
+java:S1854"9Remove this useless assignment to local variable "node2".(Ÿ£ÂÓÿÿÿÿÿ8Ğíş1J$f7c0c96c-8b11-471b-9490-76889b404d30
+|
+java:S1854"9Remove this useless assignment to local variable "node1".(Ù†‹Ø8Ñíş1J$000b2566-bae4-4aa1-b3eb-4d98fafacdfa
+m
+java:S1481"*Remove this unused "node1" local variable.(Ù†‹Ø8£Œçş1J$a0893ccc-86ee-4be9-bd14-208725fbcfbe
+r
+java:S1481"*Remove this unused "node2" local variable.(Ÿ£ÂÓÿÿÿÿÿ8ÀÆíş1J$ceb7eecd-31b9-452a-afdd-df17fc07f8a6
+r
+java:S1481 "*Remove this unused "node3" local variable.(ø™àÙúÿÿÿÿ8ÁÆíş1J$bca25f98-3eff-428b-aed2-6f63878036fa
+m
+java:S1481!"*Remove this unused "node4" local variable.(ÌÜìÖ8ÂÆíş1J$0cc53e8b-0654-48a6-9f2d-ca1e9278f892
+v
+java:S1068
+".Remove this unused "carsWeight" private field.(û‹Á»şÿÿÿÿ8¥Œçş1J$cc06b80b-ba59-4158-ba4e-5cbc599b2ec3
+|
+java:S1068"4Remove this unused "pedestrianWeight" private field.(á öùÿÿÿÿ8ÌÁçş1J$0d2b864c-0ceb-416b-80af-2e089f616fcb
+p
+java:S1068".Remove this unused "timeWeight" private field.(áş•f8¥Œçş1J$e22126dc-ce63-4023-8661-76b0cd3df5c5
