@@ -31,13 +31,22 @@ public class Algorithm extends Thread {
 
     @Override
     public void run() {
-        Node node1 = new Node(pedestrianTrafficLights.get(0), pedestrianTrafficLights.get(1), carTrafficLights.get(0));
-        Node node2 = new Node(pedestrianTrafficLights.get(2), pedestrianTrafficLights.get(3), carTrafficLights.get(1));
-        Node node3 = new Node(pedestrianTrafficLights.get(4), pedestrianTrafficLights.get(5), carTrafficLights.get(2));
-        Node node4 = new Node(pedestrianTrafficLights.get(5), pedestrianTrafficLights.get(6), carTrafficLights.get(3));
+        Node[] nodes = new Node[4];
+        for (int i = 0; i < 4; i++) {
+            nodes[i] = new Node(pedestrianTrafficLights.get(i), pedestrianTrafficLights.get(i+4), carTrafficLights.get(i));
+            nodes[i].stopNode();
+        }
         while (!isInterrupted()) {
-            Node loadedNode = maxWeightNode(maxWeightNode(node1, node2), maxWeightNode(node3, node4));
-            
+            Node loadedNode = maxWeightNode(maxWeightNode(nodes[0], nodes[1]), maxWeightNode(nodes[2], nodes[3]));
+            loadedNode.unloadNode();
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                System.out.println("Задержка перед следующим циклом заершена");
+            }
+            for (Node node : nodes) {
+                node.stopNode();
+            }
         }
     }
 

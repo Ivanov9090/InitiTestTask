@@ -14,7 +14,7 @@ public class PedestrianTrafficLight extends TrafficLight {
     }
 
     @Override
-    protected void changeColor(Color color) {
+    public void changeColor(Color color) {
         switch (color) {         // Исключаем любые состояния для пешеходного светофора, кроме зеленого и красного
             case RED:
                 this.color = Color.RED;

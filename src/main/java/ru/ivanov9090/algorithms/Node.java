@@ -10,6 +10,7 @@ package ru.ivanov9090.algorithms;
  */
 
 import ru.ivanov9090.trafficlights.CarTrafficLight;
+import ru.ivanov9090.trafficlights.Color;
 import ru.ivanov9090.trafficlights.PedestrianTrafficLight;
 
 import java.time.LocalDateTime;
@@ -56,5 +57,19 @@ public class Node {
             timeWeight += (int) secondPedestrianTrafficLight.getDetectedObjects().get(0).until(LocalDateTime.now(), ChronoUnit.SECONDS);
         }
         return timeWeight*timeWC;
+    }
+
+    public void unloadNode() {
+        carTrafficLight.changeColor(Color.ORANGE);
+        firstPedestrianTrafficLight.changeColor(Color.GREEN);
+        secondPedestrianTrafficLight.changeColor(Color.GREEN);
+        carTrafficLight.changeColor(Color.GREEN);
+    }
+
+    public void stopNode() {
+        carTrafficLight.changeColor(Color.ORANGE);
+        firstPedestrianTrafficLight.changeColor(Color.RED);
+        secondPedestrianTrafficLight.changeColor(Color.RED);
+        carTrafficLight.changeColor(Color.RED);
     }
 }

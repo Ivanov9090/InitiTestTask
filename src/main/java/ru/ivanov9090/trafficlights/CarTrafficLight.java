@@ -14,7 +14,7 @@ public class CarTrafficLight extends TrafficLight {
     }
 
     @Override
-    protected void changeColor(Color color) {
+    public void changeColor(Color color) {
         this.color = color;
     }
 }
