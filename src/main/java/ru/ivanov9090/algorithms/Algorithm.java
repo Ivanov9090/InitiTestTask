@@ -51,9 +51,9 @@ public class Algorithm implements Runnable {
             loadedNode.unloadNode();
 
             // Некоторая оптимизация, если наиболее нагруженный узел не имеет очереди машин или пешеходов
-            if (loadedNode.isPedestrianTraficEmpty()) {
+            if (loadedNode.isPedestrianTrafficEmpty()) {
                 getAlternativeNode(nodes, loadedNode).startCarTrafficLight();
-            } else if (loadedNode.isCarTraficEmpty()) {
+            } else if (loadedNode.isCarTrafficEmpty()) {
                 getAlternativeNode(nodes, loadedNode).startPedestrianTrafficLight();
             }
 

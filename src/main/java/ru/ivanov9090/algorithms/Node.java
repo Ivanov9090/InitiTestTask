@@ -20,8 +20,8 @@ import java.time.temporal.ChronoUnit;
 
 public class Node {
 
-    private boolean isPedestrianTraficEmpty;
-    private boolean isCarTraficEmpty;
+    private boolean isPedestrianTrafficEmpty;
+    private boolean isCarTrafficEmpty;
     private final PedestrianTrafficLight firstPedestrianTrafficLight;
     private final PedestrianTrafficLight secondPedestrianTrafficLight;
     private final CarTrafficLight carTrafficLight;
@@ -43,14 +43,14 @@ public class Node {
     private int getPedestrianWeight(int pedestrianWC) {
         int firstQueueSize = firstPedestrianTrafficLight.getDetectedObjects().size();
         int secondQueueSize = secondPedestrianTrafficLight.getDetectedObjects().size();
-        isPedestrianTraficEmpty = (firstQueueSize == 0 && secondQueueSize == 0);
+        isPedestrianTrafficEmpty = (firstQueueSize == 0 && secondQueueSize == 0);
         return (firstQueueSize + secondQueueSize) * pedestrianWC;
     }
 
     // Расчёт веса машин
     private int getCarWeight(int carsWC) {
         int carQueueSize = carTrafficLight.getDetectedObjects().size();
-        isCarTraficEmpty = (carQueueSize == 0);
+        isCarTrafficEmpty = (carQueueSize == 0);
         return carQueueSize * carsWC;
     }
 
@@ -71,8 +71,8 @@ public class Node {
 
     // Разгрузка узла. Включает зеленый сигнал светофора
     public void unloadNode() {
-        if (!isCarTraficEmpty) startCarTrafficLight();
-        if (!isPedestrianTraficEmpty) startPedestrianTrafficLight();
+        if (!isCarTrafficEmpty) startCarTrafficLight();
+        if (!isPedestrianTrafficEmpty) startPedestrianTrafficLight();
     }
 
     // Включение зеленого сигнала светофора для машин
@@ -94,11 +94,11 @@ public class Node {
         secondPedestrianTrafficLight.changeColor(Color.RED);
     }
 
-    public boolean isPedestrianTraficEmpty() {
-        return isPedestrianTraficEmpty;
+    public boolean isPedestrianTrafficEmpty() {
+        return isPedestrianTrafficEmpty;
     }
 
-    public boolean isCarTraficEmpty() {
-        return isCarTraficEmpty;
+    public boolean isCarTrafficEmpty() {
+        return isCarTrafficEmpty;
     }
 }
