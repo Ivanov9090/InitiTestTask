@@ -1,4 +1,6 @@
 
+•
+java:S3776!"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(“–ış8îÂà¼ş1J$5afbdc9d-49f3-42df-b7fc-b0139c3e006c
 ¡
-java:S2142,"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8â¯¶ºş1J$9cf579c8-0473-4c37-ac64-957a8ce75327
-r	java:S106-"+Replace this use of System.out by a logger.(ÖÓÄùÿÿÿÿ8Ûî¶ºş1J$725a7448-6e9e-45e8-aab0-70e0360441a3
+java:S2142A"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8·Ğß¼ş1J$23c524a4-a7ac-4bda-a042-6f6cd7ae77ac
+m	java:S106B"+Replace this use of System.out by a logger.(œÙµÂ8¹Ğß¼ş1J$b3aec9e1-d334-4108-bc64-4e4fdbbe9c96

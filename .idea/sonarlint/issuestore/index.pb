@@ -3,12 +3,6 @@ U
 %src/main/java/ru/ivanov9090/Main.java,4\4\44a5249484bfbe04446ba363151872046be3d629
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-^
-.src/main/java/ru/ivanov9090/TrafficLights.java,5\3\5350bd3abcd8c60f57041aee57f395ed32e8305b
-v
-Fsrc/main/java/ru/ivanov9090/TrafficLights/PedestrianTrafficLights.java,8\1\811bbf61d3acae04910680afb8fa392a14d77913
-o
-?src/main/java/ru/ivanov9090/TrafficLights/CarTrafficLights.java,9\e\9ec535a69d2e4f0f6cac02b795e682153bb28ca0
 u
 Esrc/main/java/ru/ivanov9090/TrafficLights/PedestrianTrafficLight.java,f\c\fc2481c24de488df592f20795a88bb4965d26e75
 n

@@ -2,15 +2,17 @@ package ru.ivanov9090.trafficlights;
 
 /*
 Класс описывает светофор для пешеходов.
-Для списка обноруженных объектов используется ArrayList, однако при необходимости можно использовать LinkedList.
+В класс при создании передается уникальный идентификатор и лист, в который реальный светофор помещает (или удаляет)
+время появления пешеходов.
  */
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class PedestrianTrafficLight extends TrafficLight {
-    public PedestrianTrafficLight(int id) {
+    public PedestrianTrafficLight(int id, List<LocalDateTime> list) {
         super(id);
-        this.detectedObjects = new ArrayList<>();
+        this.detectedObjects = list;
     }
 
     @Override
