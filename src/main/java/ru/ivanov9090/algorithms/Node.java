@@ -22,9 +22,9 @@ public class Node {
 
     private boolean isPedestrianTraficEmpty;
     private boolean isCarTraficEmpty;
-    private PedestrianTrafficLight firstPedestrianTrafficLight;
-    private PedestrianTrafficLight secondPedestrianTrafficLight;
-    private CarTrafficLight carTrafficLight;
+    private final PedestrianTrafficLight firstPedestrianTrafficLight;
+    private final PedestrianTrafficLight secondPedestrianTrafficLight;
+    private final CarTrafficLight carTrafficLight;
 
     public Node(PedestrianTrafficLight firstPedestrianTrafficLight,
                 PedestrianTrafficLight secondPedestrianTrafficLight,
@@ -43,16 +43,14 @@ public class Node {
     private int getPedestrianWeight(int pedestrianWC) {
         int firstQueueSize = firstPedestrianTrafficLight.getDetectedObjects().size();
         int secondQueueSize = secondPedestrianTrafficLight.getDetectedObjects().size();
-        if (firstQueueSize == 0 && secondQueueSize == 0) isPedestrianTraficEmpty = true;
-        else isPedestrianTraficEmpty = false;
+        isPedestrianTraficEmpty = (firstQueueSize == 0 && secondQueueSize == 0);
         return (firstQueueSize + secondQueueSize) * pedestrianWC;
     }
 
     // Расчёт веса машин
     private int getCarWeight(int carsWC) {
         int carQueueSize = carTrafficLight.getDetectedObjects().size();
-        if (carQueueSize == 0) isCarTraficEmpty = true;
-        else isCarTraficEmpty = false;
+        isCarTraficEmpty = (carQueueSize == 0);
         return carQueueSize * carsWC;
     }
 
@@ -80,11 +78,6 @@ public class Node {
     // Включение зеленого сигнала светофора для машин
     public void startCarTrafficLight() {
         carTrafficLight.changeColor(Color.ORANGE);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            System.out.println("InterruptedException");
-        }
         carTrafficLight.changeColor(Color.GREEN);
     }
 
@@ -96,10 +89,9 @@ public class Node {
 
     // Включение красного сигнала на всех светофорах узла
     public void stopNode() {
-        carTrafficLight.changeColor(Color.ORANGE);
+        carTrafficLight.changeColor(Color.RED);
         firstPedestrianTrafficLight.changeColor(Color.RED);
         secondPedestrianTrafficLight.changeColor(Color.RED);
-        carTrafficLight.changeColor(Color.RED);
     }
 
     public boolean isPedestrianTraficEmpty() {

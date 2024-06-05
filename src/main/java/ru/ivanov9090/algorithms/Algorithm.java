@@ -9,13 +9,16 @@ import ru.ivanov9090.trafficlights.CarTrafficLight;
 import ru.ivanov9090.trafficlights.PedestrianTrafficLight;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class Algorithm extends Thread {
+public class Algorithm implements Runnable {
     private final int carsWC; // Весовой коэффициент для машин
     private final int pedestrianWC; // Весовой коэффициент для пешиходов
     private final int timeWC; // Весовой коэффициент для времени, которое объект ожидал для продолжения дижения
-    private List<PedestrianTrafficLight> pedestrianTrafficLights; // Список пешеходных светофоров
-    private List<CarTrafficLight> carTrafficLights; // Список светофоров для машин
+    private final List<PedestrianTrafficLight> pedestrianTrafficLights; // Список пешеходных светофоров
+    private final List<CarTrafficLight> carTrafficLights; // Список светофоров для машин
 
     public Algorithm(List<PedestrianTrafficLight> pedestrianTrafficLights,
                      List<CarTrafficLight> carTrafficLights,
@@ -38,8 +41,9 @@ public class Algorithm extends Thread {
             nodes[i].stopNode();
         }
 
-        // Запуск алгоритма до внешнего прерывания
-        while (!isInterrupted()) {
+        // Запуск алгоритма
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(() -> {
             // Поиск наиболее нагруженного узла
             Node loadedNode = maxWeightNode(maxWeightNode(nodes[0], nodes[1]), maxWeightNode(nodes[2], nodes[3]));
 
@@ -48,27 +52,15 @@ public class Algorithm extends Thread {
 
             // Некоторая оптимизация, если наиболее нагруженный узел не имеет очереди машин или пешеходов
             if (loadedNode.isPedestrianTraficEmpty()) {
-                if (loadedNode.equals(nodes[0])) nodes[2].startCarTrafficLight();
-                else if (loadedNode.equals(nodes[1])) nodes[3].startCarTrafficLight();
-                else if (loadedNode.equals(nodes[2])) nodes[0].startCarTrafficLight();
-                else nodes[1].startCarTrafficLight();
+                getAlternativeNode(nodes, loadedNode).startCarTrafficLight();
             } else if (loadedNode.isCarTraficEmpty()) {
-                if (loadedNode.equals(nodes[0])) nodes[2].startPedestrianTrafficLight();
-                else if (loadedNode.equals(nodes[1])) nodes[3].startPedestrianTrafficLight();
-                else if (loadedNode.equals(nodes[2])) nodes[0].startPedestrianTrafficLight();
-                else nodes[1].startPedestrianTrafficLight();
+                getAlternativeNode(nodes, loadedNode).startPedestrianTrafficLight();
             }
 
-            // Запуск ожидания для следующего цикла анализа
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                System.out.println("InterruptedException");
-            }
             for (Node node : nodes) {
                 node.stopNode();
             }
-        }
+        }, 0, 10, TimeUnit.SECONDS);
     }
 
     // Метод для поиска наиболее нагруженного узла
@@ -76,5 +68,12 @@ public class Algorithm extends Thread {
         int node1Weight = node1.getWeight(pedestrianWC, carsWC, timeWC);
         int node2Weight = node2.getWeight(pedestrianWC, carsWC, timeWC);
         return node1Weight > node2Weight ? node1 : node2;
+    }
+
+    private Node getAlternativeNode(Node[] nodes, Node loadedNode) {
+        if (loadedNode.equals(nodes[0])) return nodes[2];
+        if (loadedNode.equals(nodes[1])) return nodes[3];
+        if (loadedNode.equals(nodes[2])) return nodes[0];
+        return nodes[1];
     }
 }
